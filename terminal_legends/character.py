@@ -1,3 +1,6 @@
+import random
+
+
 class Character:
     def __init__(self, name, char_class):
         self.name = name
@@ -32,7 +35,14 @@ class Character:
             self.hp = 0
 
     def deal_damage(self):
-        return self.attack
+        base_damage = self.attack
+
+        if random.random() < 0.2:
+            critical_damage = base_damage * 2
+            print("\nCritical hit!")
+            return critical_damage
+
+        return base_damage
 
     def heal(self):
         if self.potions <= 0:
@@ -49,13 +59,13 @@ class Character:
             self.hp = self.max_hp
 
         self.potions -= 1
-        print(f"\nYou used a potion and restored {heal_amount} HP!")
+        print(f"\nYou used a potion and restored {heal_amount} HP.")
         print(f"Potions left: {self.potions}")
         return True
 
     def gain_xp(self, amount):
         self.xp += amount
-        print(f"{self.name} gained {amount} XP!")
+        print(f"{self.name} gained {amount} XP.")
 
         while self.xp >= self.xp_to_next_level:
             self.xp -= self.xp_to_next_level
@@ -63,7 +73,7 @@ class Character:
 
     def gain_gold(self, amount):
         self.gold += amount
-        print(f"{self.name} received {amount} gold!")
+        print(f"{self.name} received {amount} gold.")
 
     def level_up(self):
         self.level += 1
@@ -72,6 +82,6 @@ class Character:
         self.hp = self.max_hp
         self.xp_to_next_level += 10
 
-        print(f"\nLEVEL UP! {self.name} is now level {self.level}!")
+        print(f"\nLEVEL UP! {self.name} is now level {self.level}.")
         print(f"Max HP increased to {self.max_hp}.")
         print(f"Attack increased to {self.attack}.")
