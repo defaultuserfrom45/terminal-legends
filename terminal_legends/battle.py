@@ -1,4 +1,5 @@
 import random
+import time
 from terminal_legends.monster import Monster
 from terminal_legends.boss import create_boss
 
@@ -15,17 +16,19 @@ def create_random_monster(player_level):
 
 def battle_loop(player, monster, allow_run=True):
     print(f"\nA wild {monster.name} appears!")
+    time.sleep(1)
 
     while player.is_alive() and monster.is_alive():
-        print("\n--------------------")
-        print(f"{player.name} - Level {player.level}")
+        print("\n==============================")
+        print(f"{player.name} (Level {player.level})")
         print(f"HP: {player.hp}/{player.max_hp}")
         print(f"Attack: {player.attack}")
         print(f"XP: {player.xp}/{player.xp_to_next_level}")
         print(f"Potions: {player.potions}")
         print(f"Gold: {player.gold}")
-        print(f"\n{monster.name} HP: {monster.hp}")
-        print("--------------------")
+        print("------------------------------")
+        print(f"{monster.name} HP: {monster.hp}")
+        print("==============================")
 
         print("\nWhat do you want to do?")
         print("1. Attack")
@@ -38,12 +41,14 @@ def battle_loop(player, monster, allow_run=True):
         if choice == "1":
             damage = player.deal_damage()
             monster.take_damage(damage)
-            print(f"\nYou attack the {monster.name} and deal {damage} damage!")
+            print(f"\nYou strike the {monster.name} for {damage} damage.")
+            time.sleep(1)
 
         elif choice == "2":
             used_potion = player.heal()
             if not used_potion:
                 continue
+            time.sleep(1)
 
         elif choice == "3" and allow_run:
             print("\nYou ran away from the battle!")
@@ -56,7 +61,8 @@ def battle_loop(player, monster, allow_run=True):
         if monster.is_alive():
             damage = monster.deal_damage()
             player.take_damage(damage)
-            print(f"The {monster.name} hits you for {damage} damage!")
+            print(f"The {monster.name} attacks you for {damage} damage.")
+            time.sleep(1)
 
     if player.is_alive():
         print(f"\nYou defeated the {monster.name}!")
@@ -84,9 +90,15 @@ def start_boss_battle(player):
 
     if result == "won":
         print("\nYOU DEFEATED THE DRAGON!")
-        print("You are the champion of Terminal Legends!")
+        print("================================")
+        print(f"Champion: {player.name}")
+        print(f"Final Level: {player.level}")
+        print(f"Final Gold: {player.gold}")
+        print("================================")
+        print("You are the true hero of Terminal Legends!")
         return "boss_won"
-    elif result == "lost":
+
+    if result == "lost":
         print("\nThe Dragon has defeated you...")
         return "boss_lost"
 
