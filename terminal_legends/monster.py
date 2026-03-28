@@ -15,3 +15,4 @@ class Monster:
 
     def deal_damage(self):
         return self.attack
+        
