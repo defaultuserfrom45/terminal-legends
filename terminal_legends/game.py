@@ -1,6 +1,7 @@
 from terminal_legends.character import Character
 from terminal_legends.battle import start_battle, start_boss_battle
 from terminal_legends.shop import open_shop
+from terminal_legends.save_system import save_game, load_game
 
 
 def show_player_status(player):
@@ -17,7 +18,7 @@ def show_player_status(player):
 
 
 def create_character():
-    print("Welcome to Terminal Legends!")
+    print("\nCreate Your Character")
     print("----------------------------")
 
     name = input("Enter your character name: ")
@@ -43,18 +44,41 @@ def create_character():
     return player
 
 
+def main_menu():
+    while True:
+        print("\n=== Terminal Legends ===")
+        print("1. New Game")
+        print("2. Load Game")
+        print("3. Quit")
+
+        choice = input("> ")
+
+        if choice == "1":
+            return create_character()
+        elif choice == "2":
+            player = load_game()
+            if player is not None:
+                return player
+        elif choice == "3":
+            print("\nGoodbye!")
+            return None
+        else:
+            print("\nInvalid choice. Please try again.")
+
+
 def game_loop(player):
     while player.is_alive():
         print("\nMain Menu")
         print("1. Fight a monster")
         print("2. Show character status")
         print("3. Visit shop")
+        print("4. Save game")
 
         if player.level >= 3:
-            print("4. Fight the Boss")
-            print("5. Quit game")
+            print("5. Fight the Boss")
+            print("6. Quit game")
         else:
-            print("4. Quit game")
+            print("5. Quit game")
 
         choice = input("> ")
 
@@ -70,7 +94,10 @@ def game_loop(player):
         elif choice == "3":
             open_shop(player)
 
-        elif choice == "4" and player.level >= 3:
+        elif choice == "4":
+            save_game(player)
+
+        elif choice == "5" and player.level >= 3:
             boss_result = start_boss_battle(player)
 
             if boss_result == "boss_won":
@@ -80,7 +107,7 @@ def game_loop(player):
                 print("\nGame Over!")
                 break
 
-        elif (choice == "4" and player.level < 3) or (choice == "5" and player.level >= 3):
+        elif (choice == "5" and player.level < 3) or (choice == "6" and player.level >= 3):
             print("\nThanks for playing Terminal Legends!")
             break
 
@@ -89,5 +116,6 @@ def game_loop(player):
 
 
 def start_game():
-    player = create_character()
-    game_loop(player)
+    player = main_menu()
+    if player is not None:
+        game_loop(player)
