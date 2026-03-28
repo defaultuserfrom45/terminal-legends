@@ -21,6 +21,7 @@ class Character:
         self.xp = 0
         self.xp_to_next_level = 20
         self.potions = 2
+        self.gold = 0
 
     def is_alive(self):
         return self.hp > 0
@@ -59,6 +60,10 @@ class Character:
         while self.xp >= self.xp_to_next_level:
             self.xp -= self.xp_to_next_level
             self.level_up()
+
+    def gain_gold(self, amount):
+        self.gold += amount
+        print(f"{self.name} received {amount} gold!")
 
     def level_up(self):
         self.level += 1
