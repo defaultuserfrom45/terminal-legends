@@ -19,6 +19,8 @@ class Character:
         self.hp = self.max_hp
         self.level = 1
         self.xp = 0
+        self.xp_to_next_level = 20
+        self.potions = 2
 
     def is_alive(self):
         return self.hp > 0
@@ -31,18 +33,40 @@ class Character:
     def deal_damage(self):
         return self.attack
 
+    def heal(self):
+        if self.potions <= 0:
+            print("\nYou have no potions left!")
+            return False
+
+        if self.hp == self.max_hp:
+            print("\nYour health is already full!")
+            return False
+
+        heal_amount = 10
+        self.hp += heal_amount
+        if self.hp > self.max_hp:
+            self.hp = self.max_hp
+
+        self.potions -= 1
+        print(f"\nYou used a potion and restored {heal_amount} HP!")
+        print(f"Potions left: {self.potions}")
+        return True
+
     def gain_xp(self, amount):
         self.xp += amount
         print(f"{self.name} gained {amount} XP!")
 
-        if self.xp >= 20:
+        while self.xp >= self.xp_to_next_level:
+            self.xp -= self.xp_to_next_level
             self.level_up()
 
     def level_up(self):
         self.level += 1
-        self.xp = 0
         self.max_hp += 5
         self.attack += 1
         self.hp = self.max_hp
+        self.xp_to_next_level += 10
 
-        print(f"\n🔥 LEVEL UP! {self.name} is now level {self.level}!")
+        print(f"\nLEVEL UP! {self.name} is now level {self.level}!")
+        print(f"Max HP increased to {self.max_hp}.")
+        print(f"Attack increased to {self.attack}.")
