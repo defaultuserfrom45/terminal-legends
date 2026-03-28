@@ -1,5 +1,6 @@
 import random
 from terminal_legends.monster import Monster
+from terminal_legends.boss import create_boss
 
 
 def create_random_monster(player_level):
@@ -12,9 +13,7 @@ def create_random_monster(player_level):
     return random.choice(monsters)
 
 
-def start_battle(player):
-    monster = create_random_monster(player.level)
-
+def battle_loop(player, monster, allow_run=True):
     print(f"\nA wild {monster.name} appears!")
 
     while player.is_alive() and monster.is_alive():
@@ -31,7 +30,8 @@ def start_battle(player):
         print("\nWhat do you want to do?")
         print("1. Attack")
         print("2. Use potion")
-        print("3. Run away")
+        if allow_run:
+            print("3. Run away")
 
         choice = input("> ")
 
@@ -45,9 +45,9 @@ def start_battle(player):
             if not used_potion:
                 continue
 
-        elif choice == "3":
+        elif choice == "3" and allow_run:
             print("\nYou ran away from the battle!")
-            return True
+            return "ran"
 
         else:
             print("\nInvalid choice. Try again.")
@@ -62,7 +62,32 @@ def start_battle(player):
         print(f"\nYou defeated the {monster.name}!")
         player.gain_xp(monster.xp_reward)
         player.gain_gold(monster.gold_reward)
-        return True
+        return "won"
     else:
         print(f"\nYou were defeated by the {monster.name}...")
-        return False
+        return "lost"
+
+
+def start_battle(player):
+    monster = create_random_monster(player.level)
+    result = battle_loop(player, monster, allow_run=True)
+    return result != "lost"
+
+
+def start_boss_battle(player):
+    boss = create_boss(player.level)
+    print("\n=== BOSS BATTLE ===")
+    print("A terrifying Dragon stands before you!")
+    print("There is no escape from this fight.")
+
+    result = battle_loop(player, boss, allow_run=False)
+
+    if result == "won":
+        print("\nYOU DEFEATED THE DRAGON!")
+        print("You are the champion of Terminal Legends!")
+        return "boss_won"
+    elif result == "lost":
+        print("\nThe Dragon has defeated you...")
+        return "boss_lost"
+
+    return result
