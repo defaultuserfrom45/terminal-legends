@@ -1,5 +1,5 @@
 from terminal_legends.character import Character
-from terminal_legends.battle import start_battle
+from terminal_legends.battle import start_battle, start_boss_battle
 from terminal_legends.shop import open_shop
 
 
@@ -49,7 +49,12 @@ def game_loop(player):
         print("1. Fight a monster")
         print("2. Show character status")
         print("3. Visit shop")
-        print("4. Quit game")
+
+        if player.level >= 3:
+            print("4. Fight the Boss")
+            print("5. Quit game")
+        else:
+            print("4. Quit game")
 
         choice = input("> ")
 
@@ -58,13 +63,27 @@ def game_loop(player):
             if not survived:
                 print("\nGame Over!")
                 break
+
         elif choice == "2":
             show_player_status(player)
+
         elif choice == "3":
             open_shop(player)
-        elif choice == "4":
+
+        elif choice == "4" and player.level >= 3:
+            boss_result = start_boss_battle(player)
+
+            if boss_result == "boss_won":
+                print("\nCongratulations! You completed the game!")
+                break
+            elif boss_result == "boss_lost":
+                print("\nGame Over!")
+                break
+
+        elif (choice == "4" and player.level < 3) or (choice == "5" and player.level >= 3):
             print("\nThanks for playing Terminal Legends!")
             break
+
         else:
             print("\nInvalid choice. Please try again.")
 
