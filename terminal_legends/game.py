@@ -19,7 +19,7 @@ def show_player_status(player):
 
 def create_character():
     print("\nCreate Your Character")
-    print("----------------------------")
+    print("---------------------")
 
     name = input("Enter your character name: ")
 
@@ -46,7 +46,9 @@ def create_character():
 
 def main_menu():
     while True:
-        print("\n=== Terminal Legends ===")
+        print("\n====================================")
+        print("         TERMINAL LEGENDS")
+        print("====================================")
         print("1. New Game")
         print("2. Load Game")
         print("3. Quit")
