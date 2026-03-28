@@ -4,10 +4,10 @@ from terminal_legends.monster import Monster
 
 def create_random_monster(player_level):
     monsters = [
-        Monster("Goblin", 15 + player_level * 2, 4 + player_level, 10),
-        Monster("Wolf", 12 + player_level * 2, 5 + player_level, 12),
-        Monster("Skeleton", 18 + player_level * 2, 3 + player_level, 14),
-        Monster("Orc", 22 + player_level * 3, 6 + player_level, 18),
+        Monster("Goblin", 15 + player_level * 2, 4 + player_level, 10, 8),
+        Monster("Wolf", 12 + player_level * 2, 5 + player_level, 12, 10),
+        Monster("Skeleton", 18 + player_level * 2, 3 + player_level, 14, 12),
+        Monster("Orc", 22 + player_level * 3, 6 + player_level, 18, 15),
     ]
     return random.choice(monsters)
 
@@ -24,6 +24,7 @@ def start_battle(player):
         print(f"Attack: {player.attack}")
         print(f"XP: {player.xp}/{player.xp_to_next_level}")
         print(f"Potions: {player.potions}")
+        print(f"Gold: {player.gold}")
         print(f"\n{monster.name} HP: {monster.hp}")
         print("--------------------")
 
@@ -60,6 +61,7 @@ def start_battle(player):
     if player.is_alive():
         print(f"\nYou defeated the {monster.name}!")
         player.gain_xp(monster.xp_reward)
+        player.gain_gold(monster.gold_reward)
         return True
     else:
         print(f"\nYou were defeated by the {monster.name}...")
