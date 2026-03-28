@@ -9,6 +9,7 @@ description = "A terminal-based RPG game in Python"
 authors = [
     { name = "Yasin Sabanoglu" }
 ]
+readme = "README.md"
 requires-python = ">=3.10"
 
 [project.scripts]
