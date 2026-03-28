@@ -1,5 +1,6 @@
 from terminal_legends.character import Character
 from terminal_legends.battle import start_battle
+from terminal_legends.shop import open_shop
 
 
 def show_player_status(player):
@@ -11,6 +12,7 @@ def show_player_status(player):
     print(f"Attack: {player.attack}")
     print(f"XP: {player.xp}/{player.xp_to_next_level}")
     print(f"Potions: {player.potions}")
+    print(f"Gold: {player.gold}")
     print("====================")
 
 
@@ -46,7 +48,8 @@ def game_loop(player):
         print("\nMain Menu")
         print("1. Fight a monster")
         print("2. Show character status")
-        print("3. Quit game")
+        print("3. Visit shop")
+        print("4. Quit game")
 
         choice = input("> ")
 
@@ -58,6 +61,8 @@ def game_loop(player):
         elif choice == "2":
             show_player_status(player)
         elif choice == "3":
+            open_shop(player)
+        elif choice == "4":
             print("\nThanks for playing Terminal Legends!")
             break
         else:
