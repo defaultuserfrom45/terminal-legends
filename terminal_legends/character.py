@@ -44,6 +44,33 @@ class Character:
 
         return base_damage
 
+    def use_special_ability(self):
+        if self.char_class == "Warrior":
+            damage = self.attack + 4
+            print(f"\nHeavy Strike deals {damage} damage!")
+            return damage
+
+        elif self.char_class == "Mage":
+            damage = self.attack + 6
+            self.hp -= 2
+            if self.hp < 1:
+                self.hp = 1
+            print(f"\nFireball deals {damage} damage!")
+            print("The spell costs 2 HP.")
+            return damage
+
+        elif self.char_class == "Rogue":
+            first_hit = self.attack
+            second_hit = self.attack
+            total_damage = first_hit + second_hit
+            print(f"\nDouble Attack hits twice for {total_damage} damage!")
+            return total_damage
+
+        else:
+            damage = self.attack + 2
+            print(f"\nSpecial ability deals {damage} damage!")
+            return damage
+
     def heal(self):
         if self.potions <= 0:
             print("\nYou have no potions left!")
