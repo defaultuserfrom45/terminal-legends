@@ -1,43 +1,112 @@
-# Terminal Legends
+# ⚔️ Terminal Legends
 
-A terminal-based RPG where players fight monsters, level up, and explore a simple game world.
-
----
-
-## 📖 About the Project
-
-Terminal Legends is a text-based role-playing game developed in Python.  
-The game runs entirely in the terminal and allows players to create a character, fight enemies, gain experience, and progress through levels.
-
-This project was created as part of a university programming course.
+A terminal-based role-playing game where you fight monsters, level up, and become the ultimate champion.
 
 ---
 
-## 🎮 Gameplay
+## 🧭 About the Game
 
-- Create your own character (Warrior, Mage, Rogue)
-- Fight randomly generated enemies
-- Use a unique special ability depending on your class
-- Gain experience and level up
-- Collect gold and improve your character
-- Visit the shop to buy potions and upgrades
-- Unlock the boss fight at level 3
-- Defeat the Dragon to win the game
+**Terminal Legends** is a text-based RPG developed in Python.  
+The game runs entirely in the terminal and focuses on strategy, progression, and character development.
+
+You will create your own hero, battle enemies, earn rewards, and ultimately face the final boss.
 
 ---
 
-## 🚀 Features
+## 🎯 Goal
 
-- Character system with different classes  
-- Turn-based combat system  
-- Critical hit mechanic  
-- Experience (XP) and leveling system  
-- Gold reward system  
-- Shop system (potions & upgrades)  
-- Random enemy encounters  
-- Boss battle with win condition  
-- Save and load system (JSON-based)  
-- Clean terminal interface  
+Your objective is simple:
+
+- Reach **Level 3**
+- Prepare your character through battles and upgrades
+- Defeat the **Dragon Boss**
+- Become the champion of Terminal Legends
+
+---
+
+## 🎮 Gameplay Overview
+
+During the game you can:
+
+- Fight randomly generated monsters
+- Gain **XP** and level up
+- Earn **gold** from battles
+- Buy upgrades in the shop
+- Use potions to heal yourself
+- Save and load your progress
+- Unlock and fight the final boss
+
+---
+
+## 🧙 Character Classes
+
+At the start of the game, you can choose between three classes:
+
+### 🛡️ Warrior
+- High health
+- Balanced damage
+- **Special Ability: Heavy Strike**
+  - Deals extra damage
+
+---
+
+### 🔥 Mage
+- Lower health
+- High damage
+- **Special Ability: Fireball**
+  - Deals strong damage
+  - Costs a small amount of HP
+
+---
+
+### 🗡️ Rogue
+- Balanced stats
+- Fast attacks
+- **Special Ability: Double Attack**
+  - Hits twice in one turn
+
+---
+
+## ⚔️ Combat System
+
+The game uses a **turn-based combat system**.
+
+In each fight, you can choose to:
+
+- Attack
+- Use your special ability
+- Use a potion
+- Run away (not possible in boss fights)
+
+Enemies scale with your level, so the game becomes more challenging as you progress.
+
+---
+
+## 🏪 Shop System
+
+After battles, you earn gold which you can spend in the shop:
+
+- Buy potions (healing)
+- Increase your attack
+- Increase your maximum HP
+
+---
+
+## 🐉 Boss Battle
+
+Once you reach **Level 3**, you unlock the final challenge:
+
+- Fight the **Dragon**
+- No escape is possible
+- Defeat it to win the game
+
+---
+
+## 💾 Save & Load System
+
+- Save your progress at any time
+- Load your character from the main menu
+- Data is stored locally in a file (`savegame.json`)
 
 ---
 
@@ -48,7 +117,7 @@ Make sure you have Python **3.10 or higher** installed.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/defaultuserfrom45/terminal-legends.git
+git clone https://github.com/DEIN-USERNAME/terminal-legends.git
 cd terminal-legends
 ```
 
@@ -62,7 +131,7 @@ uv pip install -e .
 
 ## ▶️ Run the Game
 
-Start the game with the following command:
+Start the game with:
 
 ```bash
 uv run -m terminal_legends
@@ -80,7 +149,7 @@ python -m terminal_legends
 
 ---
 
-## 🏆 Goal
+## 👤 Author
 
-Reach Level 3 and defeat the Dragon Boss to win the game.
+Yasin Sabanoglu
 
