@@ -14,6 +14,16 @@ def create_random_monster(player_level):
     return random.choice(monsters)
 
 
+def get_special_name(player):
+    if player.char_class == "Warrior":
+        return "Heavy Strike"
+    elif player.char_class == "Mage":
+        return "Fireball"
+    elif player.char_class == "Rogue":
+        return "Double Attack"
+    return "Special Ability"
+
+
 def battle_loop(player, monster, allow_run=True):
     print(f"\nA wild {monster.name} appears!")
     time.sleep(1)
@@ -21,6 +31,7 @@ def battle_loop(player, monster, allow_run=True):
     while player.is_alive() and monster.is_alive():
         print("\n==============================")
         print(f"{player.name} (Level {player.level})")
+        print(f"Class: {player.char_class}")
         print(f"HP: {player.hp}/{player.max_hp}")
         print(f"Attack: {player.attack}")
         print(f"XP: {player.xp}/{player.xp_to_next_level}")
@@ -32,9 +43,10 @@ def battle_loop(player, monster, allow_run=True):
 
         print("\nWhat do you want to do?")
         print("1. Attack")
-        print("2. Use potion")
+        print(f"2. Use {get_special_name(player)}")
+        print("3. Use potion")
         if allow_run:
-            print("3. Run away")
+            print("4. Run away")
 
         choice = input("> ")
 
@@ -45,12 +57,18 @@ def battle_loop(player, monster, allow_run=True):
             time.sleep(1)
 
         elif choice == "2":
+            damage = player.use_special_ability()
+            monster.take_damage(damage)
+            print(f"You use {get_special_name(player)} against the {monster.name}.")
+            time.sleep(1)
+
+        elif choice == "3":
             used_potion = player.heal()
             if not used_potion:
                 continue
             time.sleep(1)
 
-        elif choice == "3" and allow_run:
+        elif choice == "4" and allow_run:
             print("\nYou ran away from the battle!")
             return "ran"
 
