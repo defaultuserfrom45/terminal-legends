@@ -17,6 +17,7 @@ This project was created as part of a university programming course.
 
 - Create your own character (Warrior, Mage, Rogue)
 - Fight randomly generated enemies
+- Use a unique special ability depending on your class
 - Gain experience and level up
 - Collect gold and improve your character
 - Visit the shop to buy potions and upgrades
