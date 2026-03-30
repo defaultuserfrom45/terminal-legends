@@ -18,6 +18,21 @@ def show_player_status(player):
     print("====================")
 
 
+def show_intro():
+    print("\n====================================")
+    print("         TERMINAL LEGENDS")
+    print("====================================")
+    print("The ancient land of Eldoria is in danger.")
+    print("For years, monsters have roamed the roads,")
+    print("villages have fallen silent, and fear has")
+    print("spread across the kingdom.")
+    print("\nOnly one hero can rise against the darkness.")
+    print("Train, survive, grow stronger, and prepare")
+    print("for the final battle against the Dragon.")
+    print("Your legend begins now.")
+    print("====================================")
+
+
 def create_character():
     print("\nCreate Your Character")
     print("---------------------")
@@ -42,6 +57,7 @@ def create_character():
 
     player = Character(name, char_class)
     print(f"\nWelcome, {player.name} the {player.char_class}!")
+    print("Your journey into Eldoria begins...")
     return player
 
 
@@ -57,10 +73,12 @@ def main_menu():
         choice = input("> ")
 
         if choice == "1":
+            show_intro()
             return create_character()
         elif choice == "2":
             player = load_game()
             if player is not None:
+                print(f"\nWelcome back, {player.name}.")
                 return player
         elif choice == "3":
             print("\nGoodbye!")
