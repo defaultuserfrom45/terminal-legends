@@ -29,12 +29,14 @@ Your objective is simple:
 During the game you can:
 
 - Fight randomly generated monsters
+- Encounter random events before battles
 - Gain **XP** and level up
 - Earn **gold** from battles
 - Buy upgrades in the shop
 - Use potions to heal yourself
 - Save and load your progress
 - Unlock and fight the final boss
+- Face a Dragon Boss with a dangerous special attack
 
 ---
 
