@@ -1,24 +1,27 @@
 # ⚔️ Terminal Legends
 
-A terminal-based role-playing game where you fight monsters, level up, and become the ultimate champion.
+A terminal-based role-playing game where you fight monsters, grow stronger, and become the hero of a dangerous world.
 
 ---
 
 ## 🧭 About the Game
 
 **Terminal Legends** is a text-based RPG developed in Python.  
-The game runs entirely in the terminal and focuses on strategy, progression, and character development.
+Set in the world of **Eldoria**, you play as a lone adventurer rising against chaos and destruction.
 
-You will create your own hero, battle enemies, earn rewards, and ultimately face the final boss.
+Monsters roam the land, and only one hero can defeat the ancient Dragon and restore peace.
+
+Train, survive, and become strong enough to face the final challenge.
 
 ---
 
 ## 🎯 Goal
 
-Your objective is simple:
+Your objective is:
 
 - Reach **Level 3**
-- Prepare your character through battles and upgrades
+- Strengthen your character through battles and upgrades
+- Survive random events
 - Defeat the **Dragon Boss**
 - Become the champion of Terminal Legends
 
@@ -26,29 +29,28 @@ Your objective is simple:
 
 ## 🎮 Gameplay Overview
 
-During the game you can:
+During your journey, you can:
 
-- Fight randomly generated monsters
-- Encounter random events before battles
+- Fight randomly generated enemies
 - Gain **XP** and level up
 - Earn **gold** from battles
-- Buy upgrades in the shop
-- Use potions to heal yourself
+- Visit the shop to upgrade your character
+- Use potions to heal
+- Encounter random events
 - Save and load your progress
-- Unlock and fight the final boss
-- Face a Dragon Boss with a dangerous special attack
+- Unlock and defeat the final boss
 
 ---
 
 ## 🧙 Character Classes
 
-At the start of the game, you can choose between three classes:
+Choose your class at the start of the game:
 
 ### 🛡️ Warrior
 - High health
 - Balanced damage
 - **Special Ability: Heavy Strike**
-  - Deals extra damage
+  - Deals increased damage
 
 ---
 
@@ -63,7 +65,7 @@ At the start of the game, you can choose between three classes:
 
 ### 🗡️ Rogue
 - Balanced stats
-- Fast attacks
+- High critical hit chance
 - **Special Ability: Double Attack**
   - Hits twice in one turn
 
@@ -73,33 +75,48 @@ At the start of the game, you can choose between three classes:
 
 The game uses a **turn-based combat system**.
 
-In each fight, you can choose to:
+In each fight, you can:
 
 - Attack
 - Use your special ability
 - Use a potion
 - Run away (not possible in boss fights)
 
-Enemies scale with your level, so the game becomes more challenging as you progress.
+Enemies scale with your level, making the game progressively more challenging.
+
+---
+
+## 🎲 Random Events
+
+Before battles, random events may occur:
+
+- Find gold
+- Take damage from traps
+- Receive healing
+- Discover potions
+- Or nothing happens
+
+These events make each playthrough unique.
 
 ---
 
 ## 🏪 Shop System
 
-After battles, you earn gold which you can spend in the shop:
+You can spend gold in the shop to improve your character:
 
-- Buy potions (healing)
-- Increase your attack
-- Increase your maximum HP
+- Buy potions
+- Increase attack
+- Increase maximum HP
 
 ---
 
 ## 🐉 Boss Battle
 
-Once you reach **Level 3**, you unlock the final challenge:
+Once you reach **Level 3**, you unlock the final battle:
 
 - Fight the **Dragon**
 - No escape is possible
+- The Dragon has a powerful **Fire Breath attack**
 - Defeat it to win the game
 
 ---
@@ -108,7 +125,7 @@ Once you reach **Level 3**, you unlock the final challenge:
 
 - Save your progress at any time
 - Load your character from the main menu
-- Data is stored locally in a file (`savegame.json`)
+- Game data is stored in a local file (`savegame.json`)
 
 ---
 
@@ -119,7 +136,8 @@ Make sure you have Python **3.10 or higher** installed.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/DEIN-USERNAME/terminal-legends.git
+git clone https://github.com/defaultuserfrom45/terminal-legends.git
+
 cd terminal-legends
 ```
 
