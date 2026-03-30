@@ -1,7 +1,7 @@
 import random
 import time
 from terminal_legends.monster import Monster
-from terminal_legends.boss import create_boss
+from terminal_legends.boss import create_boss, Boss
 
 
 def create_random_monster(player_level):
@@ -22,6 +22,19 @@ def get_special_name(player):
     elif player.char_class == "Rogue":
         return "Double Attack"
     return "Special Ability"
+
+
+def monster_attack(player, monster):
+    if isinstance(monster, Boss) and random.random() < 0.3:
+        damage = monster.use_special_attack()
+        player.take_damage(damage)
+        print(f"\nThe {monster.name} uses Fire Breath and deals {damage} damage!")
+        time.sleep(1)
+    else:
+        damage = monster.deal_damage()
+        player.take_damage(damage)
+        print(f"The {monster.name} attacks you for {damage} damage.")
+        time.sleep(1)
 
 
 def battle_loop(player, monster, allow_run=True):
@@ -77,10 +90,7 @@ def battle_loop(player, monster, allow_run=True):
             continue
 
         if monster.is_alive():
-            damage = monster.deal_damage()
-            player.take_damage(damage)
-            print(f"The {monster.name} attacks you for {damage} damage.")
-            time.sleep(1)
+            monster_attack(player, monster)
 
     if player.is_alive():
         print(f"\nYou defeated the {monster.name}!")
