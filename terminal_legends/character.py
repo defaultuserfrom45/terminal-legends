@@ -7,17 +7,21 @@ class Character:
         self.char_class = char_class
 
         if char_class == "Warrior":
-            self.max_hp = 30
+            self.max_hp = 32
             self.attack = 6
+            self.crit_chance = 0.15
         elif char_class == "Mage":
-            self.max_hp = 20
+            self.max_hp = 22
             self.attack = 8
+            self.crit_chance = 0.15
         elif char_class == "Rogue":
-            self.max_hp = 25
+            self.max_hp = 26
             self.attack = 7
+            self.crit_chance = 0.30
         else:
             self.max_hp = 25
             self.attack = 5
+            self.crit_chance = 0.20
 
         self.hp = self.max_hp
         self.level = 1
@@ -37,7 +41,7 @@ class Character:
     def deal_damage(self):
         base_damage = self.attack
 
-        if random.random() < 0.2:
+        if random.random() < self.crit_chance:
             critical_damage = base_damage * 2
             print("\nCritical hit!")
             return critical_damage
@@ -46,12 +50,12 @@ class Character:
 
     def use_special_ability(self):
         if self.char_class == "Warrior":
-            damage = self.attack + 4
+            damage = self.attack + 3
             print(f"\nHeavy Strike deals {damage} damage!")
             return damage
 
         elif self.char_class == "Mage":
-            damage = self.attack + 6
+            damage = self.attack + 5
             self.hp -= 2
             if self.hp < 1:
                 self.hp = 1
@@ -61,7 +65,9 @@ class Character:
 
         elif self.char_class == "Rogue":
             first_hit = self.attack
-            second_hit = self.attack
+            second_hit = self.attack - 2
+            if second_hit < 1:
+                second_hit = 1
             total_damage = first_hit + second_hit
             print(f"\nDouble Attack hits twice for {total_damage} damage!")
             return total_damage
@@ -112,3 +118,4 @@ class Character:
         print(f"\nLEVEL UP! {self.name} is now level {self.level}.")
         print(f"Max HP increased to {self.max_hp}.")
         print(f"Attack increased to {self.attack}.")
+        print("Your health has been fully restored.")
