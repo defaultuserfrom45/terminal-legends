@@ -6,10 +6,10 @@ from terminal_legends.boss import create_boss, Boss
 
 def create_random_monster(player_level):
     monsters = [
-        Monster("Goblin", 15 + player_level * 2, 4 + player_level, 10, 8),
-        Monster("Wolf", 12 + player_level * 2, 5 + player_level, 12, 10),
-        Monster("Skeleton", 18 + player_level * 2, 3 + player_level, 14, 12),
-        Monster("Orc", 22 + player_level * 3, 6 + player_level, 18, 15),
+        Monster("Goblin", 14 + player_level * 2, 3 + player_level, 10, 8),
+        Monster("Wolf", 13 + player_level * 2, 4 + player_level, 12, 10),
+        Monster("Skeleton", 17 + player_level * 2, 3 + player_level, 14, 12),
+        Monster("Orc", 20 + player_level * 3, 5 + player_level, 18, 15),
     ]
     return random.choice(monsters)
 
@@ -25,7 +25,7 @@ def get_special_name(player):
 
 
 def monster_attack(player, monster):
-    if isinstance(monster, Boss) and random.random() < 0.3:
+    if isinstance(monster, Boss) and random.random() < 0.25:
         damage = monster.use_special_attack()
         player.take_damage(damage)
         print(f"\nThe {monster.name} uses Fire Breath and deals {damage} damage!")
