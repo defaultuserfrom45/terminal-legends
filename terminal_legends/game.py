@@ -2,6 +2,7 @@ from terminal_legends.character import Character
 from terminal_legends.battle import start_battle, start_boss_battle
 from terminal_legends.shop import open_shop
 from terminal_legends.save_system import save_game, load_game
+from terminal_legends.events import trigger_random_event
 
 
 def show_player_status(player):
@@ -85,6 +86,13 @@ def game_loop(player):
         choice = input("> ")
 
         if choice == "1":
+            trigger_random_event(player)
+
+            if not player.is_alive():
+                print("\nYou did not survive the event...")
+                print("Game Over!")
+                break
+
             survived = start_battle(player)
             if not survived:
                 print("\nGame Over!")
